@@ -1,6 +1,19 @@
 Nepali Date Converter
 ----------------------------------
 
-A simple, bare-bones Nepali date converter that works two-way i.e. AD to BS and vice-versa.
+A simple, bare-bones Nepali date converter that works two-way i.e. AD to BS and vice-versa. This application uses modified version ofthe NepaliDateConverter class by Shritesh Bhattarai (shriteshb@gmail.com).
 
 
+Valid date range:
+----------------
+1944/4/1 A.D. to 2043/4/13 A.D.
+2000/9/17 B.S. to 2099/12/20 B.S.
+
+
+Requirement:
+---------
+Python
+wxPython
+
+
+Further improvements are welcome.
