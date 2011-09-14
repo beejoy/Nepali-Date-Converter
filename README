@@ -21,7 +21,7 @@ Installation:
 
 Assuming, your system already has Python and wxPython installed, follow the steps given below.
 
-- Download the tarball from https://github.com/beejoy/Nepapi-Date-Converter/tarball/master
+- Download the tarball from https://github.com/beejoy/Nepali-Date-Converter/tarball/master
 - Unzip the tarball to a local folder
 - run the install.sh script
 
