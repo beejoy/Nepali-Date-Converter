@@ -1,7 +1,7 @@
 Nepali Date Converter
 ----------------------------------
 
-A simple, bare-bones Nepali date converter that works two-way i.e. AD to BS and vice-versa. This application uses modified version ofthe NepaliDateConverter class by Shritesh Bhattarai (shriteshb@gmail.com).
+A simple, bare-bones Nepali date converter that works two-way i.e. AD to BS and vice-versa. This application uses modified version of the NepaliDateConverter class by Shritesh Bhattarai (shriteshb@gmail.com).
 
 
 Valid date range:
@@ -16,4 +16,30 @@ Python
 wxPython
 
 
-Further improvements are welcome.
+Installation:
+--------------
+
+Assuming, your system already has Python and wxPython installed, follow the steps given below.
+
+- Download the tarball from https://github.com/beejoy/Nepapi-Date-Converter/tarball/master
+- Unzip the tarball to a local folder
+- run the install.sh script
+
+Just in case you may like to create a menu command for the application:
+
+- Goto System -> Preferences -> Main Menu
+- Select Accessories and click on New Item.
+- Enter the application information as follows:
+    Type: Application
+    Name: Nepali Date Converter
+    Command: /usr/local/bin/AppDateConverter.py
+    Comment: Simple, bare-bones date converter.
+- Then click OK -> Close.
+
+From now onwards, access the date converter application from Accessories -> Nepali Date Converter menu command.
+
+
+Contact:
+--------
+Bijay Rai (bijay.chamling@gmail.com)
+facebook.com/b33j0y, twitter.com/#!/b33j0y, github.com/beejoy
