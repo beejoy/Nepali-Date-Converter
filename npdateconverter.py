@@ -1,72 +1,71 @@
+#!/usr/bin/env python
 #Boa:Frame:FrameMain
 
 import wx
 import string
 import dateconverter
+from wx.lib.anchors import LayoutAnchors
 
 def create(parent):
     return FrameMain(parent)
 
 [wxID_FRAMEMAIN, wxID_FRAMEMAINBTNAD2BS, wxID_FRAMEMAINBTNBS2AD, 
- wxID_FRAMEMAINPANEL1, wxID_FRAMEMAINSTATICTEXT1, 
- wxID_FRAMEMAINSTCONVERTEDDATE, wxID_FRAMEMAINSTSOURCEDATE, 
- wxID_FRAMEMAINTXTCONVERTEDDATE, wxID_FRAMEMAINTXTSOURCEDATE, 
+ wxID_FRAMEMAINPANEL1, wxID_FRAMEMAINSTCONVERTEDDATE, wxID_FRAMEMAINSTEXAMPLE, 
+ wxID_FRAMEMAINSTSOURCEDATE, wxID_FRAMEMAINTXTCONVERTEDDATE, 
+ wxID_FRAMEMAINTXTSOURCEDATE, 
 ] = [wx.NewId() for _init_ctrls in range(9)]
 
 class FrameMain(wx.Frame):
     def _init_ctrls(self, prnt):
         # generated method, don't edit
         wx.Frame.__init__(self, id=wxID_FRAMEMAIN, name=u'FrameMain',
-              parent=prnt, pos=wx.Point(656, 371), size=wx.Size(377, 154),
-              style=wx.DEFAULT_FRAME_STYLE, title=u'Date Converter')
-        self.SetClientSize(wx.Size(377, 154))
+              parent=prnt, pos=wx.Point(462, 368), size=wx.Size(395, 168),
+              style=wx.FRAME_TOOL_WINDOW | wx.DEFAULT_FRAME_STYLE,
+              title=u'Date Converter')
+        self.SetClientSize(wx.Size(395, 168))
         self.Center(wx.BOTH)
 
         self.panel1 = wx.Panel(id=wxID_FRAMEMAINPANEL1, name='panel1',
-              parent=self, pos=wx.Point(0, 0), size=wx.Size(377, 154),
+              parent=self, pos=wx.Point(0, 0), size=wx.Size(395, 168),
               style=wx.TAB_TRAVERSAL)
+        self.panel1.SetConstraints(LayoutAnchors(self.panel1, True, True, False,
+              False))
 
         self.stSourceDate = wx.StaticText(id=wxID_FRAMEMAINSTSOURCEDATE,
               label=u'Source Date:', name=u'stSourceDate', parent=self.panel1,
-              pos=wx.Point(24, 21), size=wx.Size(83, 16), style=0)
+              pos=wx.Point(23, 22), size=wx.Size(83, 17), style=0)
 
         self.stConvertedDate = wx.StaticText(id=wxID_FRAMEMAINSTCONVERTEDDATE,
               label=u'Converted Date:', name=u'stConvertedDate',
-              parent=self.panel1, pos=wx.Point(24, 73), size=wx.Size(106, 16),
+              parent=self.panel1, pos=wx.Point(23, 77), size=wx.Size(106, 17),
               style=0)
 
         self.txtSourceDate = wx.TextCtrl(id=wxID_FRAMEMAINTXTSOURCEDATE,
-              name=u'txtSourceDate', parent=self.panel1, pos=wx.Point(152, 16),
-              size=wx.Size(200, 27), style=0, value=u'2068-5-27')
-        self.txtSourceDate.SetToolTipString(u'Enter source date in YYYY-MM-DD format.')
-        self.txtSourceDate.SetMinSize(wx.Size(200, 27))
+              name=u'txtSourceDate', parent=self.panel1, pos=wx.Point(136, 16),
+              size=wx.Size(232, 27), style=0, value=u'')
 
         self.txtConvertedDate = wx.TextCtrl(id=wxID_FRAMEMAINTXTCONVERTEDDATE,
-              name=u'txtConvertedDate', parent=self.panel1, pos=wx.Point(152,
-              67), size=wx.Size(200, 27), style=0, value=u'')
-        self.txtConvertedDate.SetEditable(False)
-        self.txtConvertedDate.SetMinSize(wx.Size(200, 27))
+              name=u'txtConvertedDate', parent=self.panel1, pos=wx.Point(136,
+              72), size=wx.Size(232, 27), style=0, value=u'')
+
+        self.stExample = wx.StaticText(id=wxID_FRAMEMAINSTEXAMPLE,
+              label=u'(e.g. 2008-9-9)', name=u'stExample', parent=self.panel1,
+              pos=wx.Point(142, 50), size=wx.Size(81, 13), style=0)
+        self.stExample.SetFont(wx.Font(8, wx.SWISS, wx.ITALIC, wx.NORMAL, False,
+              u'Sans'))
+        self.stExample.SetForegroundColour(wx.Colour(219, 58, 55))
 
         self.btnBS2AD = wx.Button(id=wxID_FRAMEMAINBTNBS2AD, label=u'BS to AD',
-              name=u'btnBS2AD', parent=self.panel1, pos=wx.Point(152, 106),
-              size=wx.Size(90, 29), style=0)
-        self.btnBS2AD.SetMinSize(wx.Size(90, 29))
+              name=u'btnBS2AD', parent=self.panel1, pos=wx.Point(136, 119),
+              size=wx.Size(104, 29), style=0)
         self.btnBS2AD.Bind(wx.EVT_BUTTON, self.OnBtnBS2ADButton,
               id=wxID_FRAMEMAINBTNBS2AD)
 
         self.btnAD2BS = wx.Button(id=wxID_FRAMEMAINBTNAD2BS, label=u'AD to BS',
-              name=u'btnAD2BS', parent=self.panel1, pos=wx.Point(260, 106),
-              size=wx.Size(93, 29), style=0)
-        self.btnAD2BS.SetMinSize(wx.Size(90, 29))
+              name=u'btnAD2BS', parent=self.panel1, pos=wx.Point(248, 120),
+              size=wx.Size(104, 29), style=0)
         self.btnAD2BS.Bind(wx.EVT_BUTTON, self.OnBtnAD2BSButton,
               id=wxID_FRAMEMAINBTNAD2BS)
-
-        self.staticText1 = wx.StaticText(id=wxID_FRAMEMAINSTATICTEXT1,
-              label=u'(eg. 2065-05-24)', name='staticText1', parent=self.panel1,
-              pos=wx.Point(152, 48), size=wx.Size(92, 13), style=0)
-        self.staticText1.SetFont(wx.Font(8, wx.SWISS, wx.ITALIC, wx.NORMAL,
-              False, u'Sans'))
-        self.staticText1.SetForegroundColour(wx.Colour(165, 58, 55))
 
     def __init__(self, parent):
         self._init_ctrls(parent)
@@ -76,7 +75,6 @@ class FrameMain(wx.Frame):
         return tuple([int(lst[0]), int(lst[1]), int(lst[2])])
     
     def OnBtnBS2ADButton(self, event):
-        #lst = string.split(self.txtSourceDate.GetValue(), '-')
         tplSrc = self.TupleFromString(self.txtSourceDate.GetValue(), '-')
         
         converter = dateconverter.NepaliDateConverter()
@@ -95,3 +93,9 @@ class FrameMain(wx.Frame):
             self.txtConvertedDate.SetValue(converter.format_date(src_date, 'np'))
         except:
             self.txtConvertedDate.Value = "Invalid date value encountered!"
+
+if __name__ == "__main__":
+    app = wx.App()
+    frame = create(None)
+    frame.Show()
+    app.MainLoop()
