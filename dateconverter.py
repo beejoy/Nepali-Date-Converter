@@ -8,7 +8,7 @@ import sys
 #import gtk, gtk.gdk, gobject
 #import gnomeapplet
 import datetime
-
+from datetime import date
 
 ### BEGIN LICENSE
 # Copyright (C) 2011 Shritesh Bhattarai shriteshb@gmail.com
@@ -313,17 +313,6 @@ class NepaliDateConverter:
             
         return s
 
-
-    def contents_func(self):
-        
-        converter = NepaliDateConverter()
-        now = datetime.datetime.now()
-        (y,m,d)= converter.ad2bs((now.year, now.month, now.day))
-        
-        nepmonths = {1:"बैशाख",2:"ज्येष्ठ",3:"आषाढ",4:"श्रावण",5:"भाद्र",6:"आश्विन",7:"कार्तिक",8:"मंसिर",9:"पौष",10:"माघ",11:"फाल्गुन",12:"चैत्र"}
-        
-        return " %s %s %s " %(eng2nepnum(y), nepmonths[m], eng2nepnum(d))
-
     def format_date(self, src_date, target):
         '''
         Parameter: src_date (A tuple containing the source date which is to be formatted.)
@@ -333,48 +322,13 @@ class NepaliDateConverter:
         
         if target == 'np':
             (y, m, d) = src_date
+            ad_date = self.bs2ad(src_date)
+            theweekday = self.date_from_tuple(ad_date).weekday()
             nepmonths = {1:"बैशाख",2:"ज्येष्ठ",3:"आषाढ",4:"श्रावण",5:"भाद्र",6:"आश्विन",7:"कार्तिक",8:"मंसिर",9:"पौष",10:"माघ",11:"फाल्गुन",12:"चैत्र"}
-        
-            return " %s %s %s " %(self.eng2nepnum(y), nepmonths[m], self.eng2nepnum(d))
+            nepweekdays = {0:"सोमबार", 1:"मंगलबार", 2:"बुधबार", 3:"बिहीबार", 4:"शुक्रबार", 5:"शनिबार", 6:"आइतबार"}
+            
+            #return " %s %s %s " %(self.eng2nepnum(y), nepmonths[m], self.eng2nepnum(d))
+            return "{0} {1} {2} {3}".format(nepweekdays[theweekday], self.eng2nepnum(y), nepmonths[m], self.eng2nepnum(d))
         else:
-            d = self.date_from_tuple(src_date)
-            return d.strftime("%Y %B %d")
-
-
-'''class PyApplet():
-	def __init__(self, applet):
-		self.applet=applet
-		self.label = gtk.Label("")
-		self.applet.add(self.label)
-		self.applet.set_background_widget(self.applet)
-		gobject.timeout_add_seconds(1, self.update)
-		self.update()
-		self.applet.show_all()
-		
-	def update(self):
-		self.label.set_text(contents_func())
-		return True
-
-
-def sample_factory(applet, iid):
-    PyApplet(applet)
-    return True
-
-
-if len(sys.argv) == 2 and sys.argv[1] == "run-in-window":  
-	print "running in window"
-	main_window = gtk.Window(gtk.WINDOW_TOPLEVEL)
-	main_window.set_title("Python Applet")
-	main_window.connect("destroy", gtk.main_quit) 
-	app = gnomeapplet.Applet()
-	sample_factory(app, None)
-	app.reparent(main_window)
-	main_window.show_all()
-	gtk.main()
-	sys.exit()
-
-
-gnomeapplet.bonobo_factory("OAFIID:GNOME_PythonPanelApplet_Factory", 
-                                gnomeapplet.Applet.__gtype__, 
-                                "nepcalapplet", "0", sample_factory)
-'''
+            thedate = self.date_from_tuple(src_date)            
+            return thedate.strftime("%A %Y %B %d")

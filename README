@@ -23,7 +23,7 @@ Assuming, your system already has Python and wxPython installed, follow the step
 
 - Download the tarball from https://github.com/beejoy/Nepali-Date-Converter/tarball/master
 - Unzip the tarball to a local folder
-- run the install.sh script
+- run the install.sh script as root
 
 Just in case you may like to create a menu command for the application:
 
@@ -32,7 +32,7 @@ Just in case you may like to create a menu command for the application:
 - Enter the application information as follows:
     Type: Application
     Name: Nepali Date Converter
-    Command: /usr/local/bin/AppDateConverter.py
+    Command: /usr/local/bin/npdateconverter.py
     Comment: Simple, bare-bones date converter.
 - Then click OK -> Close.
 
