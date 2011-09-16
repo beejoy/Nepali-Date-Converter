@@ -20,7 +20,7 @@ class FrameMain(wx.Frame):
         # generated method, don't edit
         wx.Frame.__init__(self, id=wxID_FRAMEMAIN, name=u'FrameMain',
               parent=prnt, pos=wx.Point(462, 368), size=wx.Size(395, 168),
-              style=wx.FRAME_TOOL_WINDOW | wx.DEFAULT_FRAME_STYLE,
+              style=wx.DEFAULT_FRAME_STYLE,
               title=u'Date Converter')
         self.SetClientSize(wx.Size(395, 168))
         self.Center(wx.BOTH)
@@ -66,6 +66,9 @@ class FrameMain(wx.Frame):
               size=wx.Size(104, 29), style=0)
         self.btnAD2BS.Bind(wx.EVT_BUTTON, self.OnBtnAD2BSButton,
               id=wxID_FRAMEMAINBTNAD2BS)
+        
+        favicon = wx.Icon('favicon.ico', wx.BITMAP_TYPE_ICO, 16, 16)
+        wx.Frame.SetIcon(self, favicon)
 
     def __init__(self, parent):
         self._init_ctrls(parent)

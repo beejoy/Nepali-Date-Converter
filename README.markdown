@@ -29,12 +29,12 @@ Just in case you may like to create a menu command for the application:
 * Select Accessories and click on New Item.
 * Enter the application information as follows:
 
-'''
+```
 Type: Application
 Name: Nepali Date Converter
 Command: /usr/local/bin/npdateconverter.py
 Comment: Simple, bare-bones date converter.
-'''
+```
 
 * Then click OK -> Close.
 
@@ -44,4 +44,4 @@ From now onwards, access the date converter application from Accessories -> Nepa
 # Contact
 
 Bijay Rai (bijay.chamling@gmail.com)
-facebook.com/b33j0y, twitter.com/#!/b33j0y, github.com/beejoy
+[Facebook](facebook.com/b33j0y), [Twitter](twitter.com/#!/b33j0y), [GitHub](github.com/beejoy)
