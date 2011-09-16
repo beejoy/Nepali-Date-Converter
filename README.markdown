@@ -44,4 +44,4 @@ From now onwards, access the date converter application from Accessories -> Nepa
 # Contact
 
 Bijay Rai (bijay.chamling@gmail.com)
-[Facebook](facebook.com/b33j0y), [Twitter](twitter.com/#!/b33j0y), [GitHub](github.com/beejoy)
+[Facebook](http://facebook.com/b33j0y), [Twitter](http://twitter.com/#!/b33j0y), [GitHub](http://github.com/beejoy)
